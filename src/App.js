@@ -1,7 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import { useSocketOn, useSocketOnce } from './hooks/useSocket';
 
 function App() {
+  const { data, setData } = useSocketOnce('first-render')
+  useSocketOn('render', setData)
+
+  console.log('data', data);
+  
   return (
     <div className="App">
       <header className="App-header">
